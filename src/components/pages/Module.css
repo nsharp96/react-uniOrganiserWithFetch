@@ -1,0 +1,10 @@
+.moduleButtons button{
+    font-size: 0.6rem;  
+    margin: 10px 5px;  
+}
+
+.moduleButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

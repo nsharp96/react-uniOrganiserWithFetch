@@ -1,0 +1,22 @@
+.changeModule {
+    background-color: pink;
+    padding: 10px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 10px;
+    position:absolute;
+    top:30px;
+    left:50%;
+    font-size: 10px;
+}
+
+.formInput {
+    margin: 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+.submitBut {
+    margin: 10px;
+    font-size: 10px;
+}

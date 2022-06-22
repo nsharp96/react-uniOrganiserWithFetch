@@ -1,0 +1,41 @@
+div.moduleCard {
+    background-color: whitesmoke;
+    height: 150px;
+    width: 125px;
+    margin: 10px 4px;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 0.3);
+    position: relative;
+}
+
+div.moduleCard img.moduleImg {
+    width: 125px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+
+.moduleName {
+    font-size: 0.65rem;
+    margin: 2px 8px 0px 4px;
+    font-weight: bold;
+}
+
+.moduleLevel {
+    font-size: 0.55rem;
+    margin: 2px 4px 0px 4px;
+    color: grey;
+}
+
+.buttonContainer {
+    margin-left: 40%;
+}
+
+div.heart i.heart {
+    color:red;
+    position: absolute;
+    margin-left: 105px;
+    top: 3px;
+}
+

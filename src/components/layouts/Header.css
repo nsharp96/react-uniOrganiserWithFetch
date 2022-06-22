@@ -1,0 +1,17 @@
+h1 {
+    font-size: 120%;
+}
+
+.logoImg:hover {
+    cursor: pointer;
+}
+
+.login {
+    font-size: 100%;
+    margin: 1rem;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}

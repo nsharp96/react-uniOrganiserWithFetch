@@ -1,0 +1,21 @@
+.navItem {
+    margin: 0.7rem;
+}
+
+.navItem a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navItem a:hover {
+    color: darkcyan;
+}
+
+.navItem a.navSelected {
+ color: darkcyan;
+}
+
+nav {
+    border-top: black solid 2px;
+}

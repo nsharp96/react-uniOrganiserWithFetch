@@ -1,0 +1,31 @@
+div .leftSide {
+    background-color: lightblue;
+    padding: 0.75rem;
+    text-align: center;
+    min-width: 175px;
+    width:20vw;
+
+}
+
+.rightSide {
+    background-color: white;
+    width: 80vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    position: relative; 
+}
+
+.main {
+    height:100%;
+    padding: 1rem;
+    padding-bottom: 2.5rem;
+}
+
+.footer {
+    width: 100%;
+}
+
