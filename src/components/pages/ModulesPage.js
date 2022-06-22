@@ -1,6 +1,5 @@
  import './Module.css';
  import Button from '../components/Button';
- import CardContainer from '../layouts/CardContainer';
  import Modules from '../components/Modules.js';
  import { useState } from 'react';
  import initialModules from '../../data.js';
