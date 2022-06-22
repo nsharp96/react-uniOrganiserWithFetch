@@ -1,20 +1,32 @@
  import './Module.css';
  import Button from '../components/Button';
  import Modules from '../components/Modules.js';
- import { useState } from 'react';
- import initialModules from '../../data.js';
+ import { useState, useEffect } from 'react';
+ import { apiRequest } from '../API/apiRequest';
  //import EditModule from '../components/EditModule';
  
  const ModulesPage = () => {
      //Properties
 
-     const [modules, setModules] = useState(initialModules);
+     const API_URL = 'https://my.api.mockaroo.com/';
+     const API_KEY = '?key=bb6adbc0';
 
      //Context
 
      //Hooks
+     const [loadingMessage, setLoadingMessage] = useState("Loading Data...");
+     const [modules, setModules] = useState(null);
+
+     useEffect ( () => {fetchModules() }, [] );
 
      //Methods
+
+     //Fetch Modules from API
+     const fetchModules = async() => {
+         const outcome = await apiRequest(API_URL, 'Modules', API_KEY);
+         if (outcome.success) setModules(outcome.response);
+         else setLoadingMessage(`Error ${outcome.response.status}: Modules could not be found`);
+     }
 
      //Delete Module
      const deleteModule = (moduleId) => {
@@ -36,7 +48,7 @@
     }
 
      const ListAll = () => {
-        setModules(initialModules)
+        fetchModules()
      }
 
      const ListFav = () => {
@@ -69,15 +81,17 @@
              </div>
 
             { 
-                modules.length > 0 
-                    ? 
-                        <Modules 
-                            modules={modules} 
-                            onDelete={deleteModule} 
-                            onFav={toggleFav} 
-                            onEdit={editModule}
-                        /> 
-                    : "You are not currently enrolled on any modules."
+                !modules 
+                    ? loadingMessage
+                    : modules.length === 0
+                        ? <p>Currently enrolled on no modules</p>
+                        :
+                            <Modules 
+                                modules={modules} 
+                                onDelete={deleteModule} 
+                                onFav={toggleFav} 
+                                onEdit={editModule}
+                            /> 
             }
             
             {/* <EditModule /> */}
