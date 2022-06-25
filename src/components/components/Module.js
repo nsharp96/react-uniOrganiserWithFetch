@@ -40,7 +40,7 @@ const Module = ( {module, onDelete, onFav, onEdit} ) => {
                     type="button"
                     icon="fa fa-trash"
                     className="moduleButton"
-                    onClick={() => onDelete(module.ModuleID)}
+                    onClick={() => onDelete(module)}
                 /> 
             </div>
             
