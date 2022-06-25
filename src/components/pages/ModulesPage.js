@@ -4,6 +4,7 @@
  import { useState, useEffect } from 'react';
  import { apiRequest } from '../API/apiRequest';
  import Modal from '../components/Modal';
+
  //import EditModule from '../components/EditModule';
  
  const ModulesPage = () => {
@@ -18,11 +19,11 @@
      const [loadingMessage, setLoadingMessage] = useState("Loading Data...");
      const [modules, setModules] = useState(null);
 
+
      const [modalVis, setModalVis] = useState(null);
      const [modalHeader, setModalHeader] = useState(null);
      const [modalContent, setModalContent] = useState(null);
      const [modalButtons, setModalButtons] = useState(null);
-
 
      useEffect ( () => {fetchModules() }, [] );
 
@@ -34,6 +35,7 @@
          if (outcome.success) setModules(outcome.response);
          else setLoadingMessage(`Error ${outcome.response.status}: Modules could not be found`);
      }
+
 
      //Cancel Modal
      const cancelModal = () => {
