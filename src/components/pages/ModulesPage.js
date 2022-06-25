@@ -3,6 +3,7 @@
  import Modules from '../components/Modules.js';
  import { useState, useEffect } from 'react';
  import { apiRequest } from '../API/apiRequest';
+ import Modal from '../components/Modal';
  //import EditModule from '../components/EditModule';
  
  const ModulesPage = () => {
@@ -17,6 +18,12 @@
      const [loadingMessage, setLoadingMessage] = useState("Loading Data...");
      const [modules, setModules] = useState(null);
 
+     const [modalVis, setModalVis] = useState(null);
+     const [modalHeader, setModalHeader] = useState(null);
+     const [modalContent, setModalContent] = useState(null);
+     const [modalButtons, setModalButtons] = useState(null);
+
+
      useEffect ( () => {fetchModules() }, [] );
 
      //Methods
@@ -28,10 +35,40 @@
          else setLoadingMessage(`Error ${outcome.response.status}: Modules could not be found`);
      }
 
-     //Delete Module
-     const deleteModule = (moduleId) => {
-         setModules(modules.filter((module) => module.ModuleID !== moduleId))
+     //Cancel Modal
+     const cancelModal = () => {
+         setModalVis(false);
      }
+
+     //Delete Module Modal
+     const deleteModuleModal = (module) => {
+         setModalHeader('Delete Module');
+         setModalContent(`Are you sure you want to delete ${module.ModuleCode} ${module.ModuleName}?`);
+         setModalButtons(
+             [
+                 <Button 
+                 key="1"
+                 type ="button"
+                 text = "Confirm"
+                 onClick={() => (deleteModule(module)) }
+                 />,
+                 <Button
+                 key="2"
+                 type = "button"
+                 text = "Cancel"
+                 onClick={cancelModal}
+                 />
+             ]
+         )
+         setModalVis(true);
+     }
+
+     //Delete Module
+     const deleteModule = (delmodule) => {
+        setModules(modules.filter((module) => module.ModuleID !== delmodule.ModuleID))
+        cancelModal();
+     }
+
 
      //Toggle Favourite
      const toggleFav = (moduleId) => {
@@ -62,6 +99,8 @@
              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
              
              <h1>My Modules</h1>
+
+             {modalVis && <Modal headerText={modalHeader} contentText={modalContent} modalButtons={modalButtons}/>}
              
              <div className="moduleButtons">
                 <Button
@@ -88,7 +127,7 @@
                         :
                             <Modules 
                                 modules={modules} 
-                                onDelete={deleteModule} 
+                                onDelete={deleteModuleModal} 
                                 onFav={toggleFav} 
                                 onEdit={editModule}
                             /> 

@@ -1,0 +1,26 @@
+div.modalContainer {
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+    left:0;
+    top:0;
+}
+
+div.innerContainer {
+    background-color: white;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+    margin-top: 10%;
+    border-radius: 10px;
+}
+
+div.modalHeader {
+    background-color: lightpink;
+    color: black;
+    height: 30%;
+    border-radius: 10px 10px 0px 0px;
+}
