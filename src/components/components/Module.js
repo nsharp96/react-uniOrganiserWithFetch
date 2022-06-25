@@ -1,5 +1,6 @@
 import './Module.css';
 import Button from './Button.js';
+import Tooltip from './Tooltip';
 
 const Module = ( {module, onDelete, onFav, onEdit} ) => {
     //Properties
@@ -24,24 +25,34 @@ const Module = ( {module, onDelete, onFav, onEdit} ) => {
             <p className='moduleLevel'>Level {module.ModuleLevel}</p>
 
             <div className='buttonContainer'>
-                <Button 
-                    type="button"
-                    icon="fa fa-check"
-                    className="moduleButton"
-                    onClick={handleFavourite}
-                />
-                <Button 
-                    type="button"
-                    icon="fa fa-pencil"
-                    className="moduleButton"
-                    onClick={() => onEdit(module.ModuleID)}
-                />
-                <Button 
-                    type="button"
-                    icon="fa fa-trash"
-                    className="moduleButton"
-                    onClick={() => onDelete(module)}
-                /> 
+
+                <Tooltip style="tooltipText" text="Set Module to Favourite">
+                    <Button 
+                        type="button"
+                        icon="fa fa-check"
+                        className="moduleButton"
+                        onClick={handleFavourite}
+                    />
+                </Tooltip>
+
+                <Tooltip style="tooltipText" text="Edit Module">
+                    <Button 
+                        type="button"
+                        icon="fa fa-pencil"
+                        className="moduleButton"
+                        onClick={() => onEdit(module.ModuleID)}
+                    />
+                </Tooltip>
+                
+                <Tooltip style="tooltipText" text="Delete Module">
+                    <Button 
+                        type="button"
+                        icon="fa fa-trash"
+                        className="moduleButton"
+                        onClick={() => onDelete(module)}
+                    /> 
+                </Tooltip>
+                
             </div>
             
         </div>

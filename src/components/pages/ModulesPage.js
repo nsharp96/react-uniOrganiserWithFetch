@@ -4,6 +4,7 @@
  import { useState, useEffect } from 'react';
  import { apiRequest } from '../API/apiRequest';
  import Modal from '../components/Modal';
+import Tooltip from '../components/Tooltip';
 
  //import EditModule from '../components/EditModule';
  
@@ -105,20 +106,28 @@
              {modalVis && <Modal headerText={modalHeader} contentText={modalContent} modalButtons={modalButtons}/>}
              
              <div className="moduleButtons">
-                <Button
-                    className="listButton"
-                    type="button"
-                    text="List all"
-                    icon="fa fa-list" 
-                    onClick = {ListAll}
-                />
-                <Button
-                    className="listButton"
-                    type="button"
-                    text="List favourites"
-                    icon="fa fa-heart"
-                    onClick = {ListFav}
-                />
+
+                 <Tooltip style="extraMargin" text="List all Modules">
+                    <Button
+                        className="listButton"
+                        type="button"
+                        text="List all"
+                        icon="fa fa-list" 
+                        onClick = {ListAll}
+                    />
+                 </Tooltip>
+
+                 <Tooltip style="extraMargin" text="List all Favourites">
+                    <Button
+                        className="listButton"
+                        type="button"
+                        text="List favourites"
+                        icon="fa fa-heart"
+                        onClick = {ListFav}
+                    />
+                 </Tooltip>
+                
+                
              </div>
 
             { 

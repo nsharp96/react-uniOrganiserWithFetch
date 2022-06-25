@@ -1,0 +1,33 @@
+.tooltipText {
+    visibility: hidden;
+    position: absolute;
+    font-size: 0.6rem;
+    background-color: lightgrey;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top:1.4rem;
+    z-index:1;
+}
+
+.extraMargin
+{
+    visibility: hidden;
+    position: absolute;
+    font-size: 0.6rem;
+    background-color: lightgrey;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top:2.2rem;
+    z-index:1;
+}
+
+.hoverContainer {
+    height: 100%;
+}
+
+.hoverContainer:hover .tooltipText {
+    visibility: visible;
+}
+.hoverContainer:hover .extraMargin {
+    visibility: visible;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Button.css';
+import Tooltip from './Tooltip';
 
 const Button = (props) => {
     //Properties
@@ -9,9 +10,11 @@ const Button = (props) => {
     //View
     return (
         <button className={props.className} type={props.type} onClick={props.onClick}>
-            <i className={props.icon}></i>
-            <span className='buttonText'>{props.text}</span>
+        <i className={props.icon}></i>
+        <span className='buttonText'>{props.text}</span>
         </button>
+
+        
         
     )
 }
