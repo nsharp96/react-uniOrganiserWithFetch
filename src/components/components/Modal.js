@@ -10,17 +10,23 @@ const Modal = (props) => {
 
     return (
         <div className="modalContainer">
+
             <div className="innerContainer">
+
                 <div className="modalHeader">
                     <h1>{props.headerText}</h1>
                 </div>
+
                 <div className="modalContent">
                     <p>{props.contentText}</p>
                 </div>
+
                 <div className="modalButtons">
                     {props.modalButtons}
                 </div>
+                
             </div>
+
         </div>
     );
 }

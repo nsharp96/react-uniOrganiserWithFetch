@@ -4,7 +4,9 @@
  import { useState, useEffect } from 'react';
  import { apiRequest } from '../API/apiRequest';
  import Modal from '../components/Modal';
-import Tooltip from '../components/Tooltip';
+ import Tooltip from '../components/Tooltip';
+ import AddForm from '../components/AddForm';
+
 
  //import EditModule from '../components/EditModule';
  
@@ -20,6 +22,7 @@ import Tooltip from '../components/Tooltip';
      const [loadingMessage, setLoadingMessage] = useState("Loading Data...");
      const [modules, setModules] = useState(null);
 
+     const[addModuleFormVis, setAddModuleFormVis] = useState(false);
 
      const [modalVis, setModalVis] = useState(null);
      const [modalHeader, setModalHeader] = useState(null);
@@ -29,6 +32,25 @@ import Tooltip from '../components/Tooltip';
      useEffect ( () => {fetchModules() }, [] );
 
      //Methods
+
+     //Make Module Form Visible
+     const moduleFormVis = () =>
+     {
+         setAddModuleFormVis(true);
+     }
+
+     //Make Module Form not visible
+     const cancelAddModule = () =>
+     {
+         setAddModuleFormVis(false);
+     }
+
+     //Add Module to modules
+     const addModule = (moduleName) => 
+     {
+         console.log(moduleName);
+         cancelAddModule();
+     }
 
      //Fetch Modules from API
      const fetchModules = async() => {
@@ -103,6 +125,11 @@ import Tooltip from '../components/Tooltip';
              
              <h1>My Modules</h1>
 
+             {
+                addModuleFormVis && 
+                <AddForm cancelAddModule={cancelAddModule} addModule={addModule} />
+             }
+
              {modalVis && <Modal headerText={modalHeader} contentText={modalContent} modalButtons={modalButtons}/>}
              
              <div className="moduleButtons">
@@ -124,6 +151,16 @@ import Tooltip from '../components/Tooltip';
                         text="List favourites"
                         icon="fa fa-heart"
                         onClick = {ListFav}
+                    />
+                 </Tooltip>
+
+                 <Tooltip style="extraMargin" text="Add a Module">
+                    <Button
+                        className="listButton"
+                        type="button"
+                        text="Add a Module"
+                        icon="fa fa-plus"
+                        onClick = {moduleFormVis}
                     />
                  </Tooltip>
                 
