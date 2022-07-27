@@ -1,5 +1,16 @@
 import './FormInput.css'
-const FormInput = (props) => {
+
+export function Form(props) {
+    return (
+        <form>
+            {props.children}
+        </form>
+    )
+    
+}
+
+
+export function FormInput(props) {
     //Properties
     //Context
     //Hooks
@@ -7,12 +18,21 @@ const FormInput = (props) => {
     //View
     return (
         <>
-            <label for={props.labelFor} value={props.value}> {props.labelText} </label>
-            <br/>
-            <input type={props.inputType} id={props.labelFor} name={props.labelFor} />
-            <br/>
+            <label htmlFor={props.labelFor}> {props.labelText} </label>
+            <input type={props.inputType} id={props.labelFor} name={props.labelFor} onChange={props.onChange} defaultValue={props.value}/>
+            {props.error && <p>*Error: {props.error}</p>}
         </>
     );
 }
 
-export default FormInput;
+export function FormSelect(props) {
+    return (
+        <>
+            <label htmlFor={props.labelFor} > {props.labelText} </label>
+            <select name={props.labelFor} onChange={props.onChange} defaultValue={props.value}>
+                {props.children}
+            </select>
+        </>
+
+    )
+}

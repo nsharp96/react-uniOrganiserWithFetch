@@ -14,7 +14,7 @@ const Module = ( {module, onDelete, onFav, onEdit} ) => {
     return (
         <div className="moduleCard">
 
-            <img className='moduleImg' src={module.ModuleImage} />
+            <img className='moduleImg' src={module.ModuleImageURL} />
 
             {
                 module.ModuleFav === true 
@@ -23,6 +23,8 @@ const Module = ( {module, onDelete, onFav, onEdit} ) => {
             
             <p className='moduleName'> {module.ModuleName} ({module.ModuleCode}) </p>
             <p className='moduleLevel'>Level {module.ModuleLevel}</p>
+            <p className='moduleLevel'>Module Leader: {module.ModuleLeaderID}</p>
+            <p className='moduleLevel'>Module ID: {module.ModuleID}</p>
 
             <div className='buttonContainer'>
 
@@ -40,7 +42,7 @@ const Module = ( {module, onDelete, onFav, onEdit} ) => {
                         type="button"
                         icon="fa fa-pencil"
                         className="moduleButton"
-                        onClick={() => onEdit(module.ModuleID)}
+                        onClick={() => onEdit(module)}
                     />
                 </Tooltip>
                 
