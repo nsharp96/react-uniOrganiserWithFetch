@@ -2,7 +2,7 @@
  import Button from '../components/Button';
  import Modules from '../components/Modules.js';
  import { useState, useEffect } from 'react';
- import { apiRequest } from '../API/apiRequest';
+ import {API} from '../API/apiRequest';
  import Modal from '../components/Modal';
  import Tooltip from '../components/Tooltip';
  import AddForm from '../components/AddForm';
@@ -13,16 +13,16 @@
  const ModulesPage = () => {
      //Properties
 
-     const API_URL = 'https://my.api.mockaroo.com/';
-     const API_KEY = '?key=bb6adbc0';
-
      //Context
 
      //Hooks
      const [loadingMessage, setLoadingMessage] = useState("Loading Data...");
      const [modules, setModules] = useState(null);
+     const [oneModule, setOneModule] = useState(null);
 
      const[addModuleFormVis, setAddModuleFormVis] = useState(false);
+     const[AddformTitle, setAddformTitle] = useState("Add Module");
+
 
      const [modalVis, setModalVis] = useState(null);
      const [modalHeader, setModalHeader] = useState(null);
@@ -43,18 +43,34 @@
      const cancelAddModule = () =>
      {
          setAddModuleFormVis(false);
+
+         setOneModule(null);
      }
 
      //Add Module to modules
-     const addModule = (moduleName) => 
+     const handleModulePost = async (module) => 
      {
-         console.log(moduleName);
-         cancelAddModule();
+        console.log("input of post"+JSON.stringify(module));
+        const outcome = await API.post('Modules', module);
+        outcome.success && cancelAddModule();
+        console.log("outcome of post"+JSON.stringify(outcome.response));
+        fetchModules();
+     }
+
+     //EDIT MODULES
+     const handleModulePut = async (module) =>
+     {
+        console.log("input of put"+JSON.stringify(module));
+        const outcome = await API.put('Modules/'+module.ModuleID , module);
+        outcome.success && cancelAddModule();
+        console.log("outcome of put"+JSON.stringify(outcome.response));
+        fetchModules();
+
      }
 
      //Fetch Modules from API
      const fetchModules = async() => {
-         const outcome = await apiRequest(API_URL, 'Modules', API_KEY);
+         const outcome = await  API.get('Modules');
          if (outcome.success) setModules(outcome.response);
          else setLoadingMessage(`Error ${outcome.response.status}: Modules could not be found`);
      }
@@ -105,8 +121,10 @@
      }
 
      //Edit Module
-     const editModule = (moduleId) => { 
-        console.log(moduleId)
+     const editModule = (module) => { 
+        setAddformTitle("Edit Module");
+        setOneModule(module);
+        setAddModuleFormVis(true);
     }
 
      const ListAll = () => {
@@ -127,7 +145,9 @@
 
              {
                 addModuleFormVis && 
-                <AddForm cancelAddModule={cancelAddModule} addModule={addModule} />
+                
+                <AddForm formTitle={AddformTitle} cancelAddModule={cancelAddModule} onPut={handleModulePut} onPost={handleModulePost} module={oneModule}/>
+
              }
 
              {modalVis && <Modal headerText={modalHeader} contentText={modalContent} modalButtons={modalButtons}/>}
