@@ -1,13 +1,16 @@
+
 import {Form, FormInput, FormSelect} from "./FormInput.js";
 import './AddForm.css';
 import Button from './Button';
 import {useState, useEffect } from 'react';
 import { API } from '../API/apiRequest';
 
+
 const AddForm = (props) => {
     //Properties
     //Context
     //Hooks
+
     const [module, setModule] = useState(null);
 
     //Error Messages
@@ -140,6 +143,7 @@ const AddForm = (props) => {
                  type = "button"
                  text = "Submit"
                  onClick={handleSubmit}
+
                  />
                  <Button
                  type = "button"
@@ -147,7 +151,9 @@ const AddForm = (props) => {
                  onClick={props.cancelAddModule}
                  />
 
+
             </Form> 
+
 
         </div>
 

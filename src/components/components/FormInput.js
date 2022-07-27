@@ -11,6 +11,7 @@ export function Form(props) {
 
 
 export function FormInput(props) {
+
     //Properties
     //Context
     //Hooks
@@ -18,9 +19,11 @@ export function FormInput(props) {
     //View
     return (
         <>
+
             <label htmlFor={props.labelFor}> {props.labelText} </label>
             <input type={props.inputType} id={props.labelFor} name={props.labelFor} onChange={props.onChange} defaultValue={props.value}/>
             {props.error && <p>*Error: {props.error}</p>}
+
         </>
     );
 }
@@ -36,3 +39,4 @@ export function FormSelect(props) {
 
     )
 }
+

@@ -23,6 +23,7 @@
      const[addModuleFormVis, setAddModuleFormVis] = useState(false);
      const[AddformTitle, setAddformTitle] = useState("Add Module");
 
+
      const [modalVis, setModalVis] = useState(null);
      const [modalHeader, setModalHeader] = useState(null);
      const [modalContent, setModalContent] = useState(null);
@@ -42,6 +43,7 @@
      const cancelAddModule = () =>
      {
          setAddModuleFormVis(false);
+
          setOneModule(null);
      }
 
@@ -63,6 +65,7 @@
         outcome.success && cancelAddModule();
         console.log("outcome of put"+JSON.stringify(outcome.response));
         fetchModules();
+
      }
 
      //Fetch Modules from API
@@ -142,7 +145,9 @@
 
              {
                 addModuleFormVis && 
+                
                 <AddForm formTitle={AddformTitle} cancelAddModule={cancelAddModule} onPut={handleModulePut} onPost={handleModulePost} module={oneModule}/>
+
              }
 
              {modalVis && <Modal headerText={modalHeader} contentText={modalContent} modalButtons={modalButtons}/>}
