@@ -6,6 +6,7 @@ import ModulesPage from './components/pages/ModulesPage';
 import Assessments from './components/pages/Assessments';
 import Schedule from './components/pages/Schedule';
 import Pagenotfound from './components/pages/pagenotfound';
+import MyUsers from './components/pages/MyUsers';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/assessments' element={<Assessments />} />
           <Route path='/schedule' element={<Schedule />} />
           <Route path='*' element={<Pagenotfound />} />
+          <Route path='/MyUsers' element={<MyUsers />} />
         </Routes>
 
       </Layout>

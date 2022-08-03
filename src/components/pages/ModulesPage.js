@@ -6,12 +6,14 @@
  import Modal from '../components/Modal';
  import Tooltip from '../components/Tooltip';
  import AddForm from '../components/AddForm';
+ import { useNavigate } from 'react-router-dom';
 
 
  //import EditModule from '../components/EditModule';
  
  const ModulesPage = () => {
      //Properties
+     const navigate = useNavigate();
 
      //Context
 
@@ -105,9 +107,12 @@
      }
 
      //Delete Module
-     const deleteModule = (delmodule) => {
-        setModules(modules.filter((module) => module.ModuleID !== delmodule.ModuleID))
-        cancelModal();
+     const deleteModule = async (delmodule) => {
+        console.log("input of delete"+JSON.stringify(delmodule));
+        const outcome = await API.delete('Modules/'+delmodule.ModuleID);
+        outcome.success && cancelModal();;
+        console.log("outcome of delete"+JSON.stringify(outcome.response));
+        fetchModules();
      }
 
 

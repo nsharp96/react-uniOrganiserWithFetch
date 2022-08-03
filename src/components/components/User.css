@@ -1,0 +1,29 @@
+div.userCard
+{
+    background-color: whitesmoke;
+    height: 120px;
+    width: 125px;
+    margin: 10px 4px;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 0.3);
+    position: relative;
+}
+
+div.userCard img.userImg {
+    width: 70px;
+    height: 80px;
+    object-fit: cover;
+    position: relative;
+    cursor: pointer;
+    margin-left: 28px;
+    margin-top: 10px;
+}
+
+.userName
+{
+    font-size: 0.65rem;
+    margin: 2px 8px 0px 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+}
